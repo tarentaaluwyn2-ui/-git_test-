@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
-
-
 * {
     margin: 0;
     padding: 0;
@@ -8,145 +5,238 @@
 }
 
 body {
-    font: "Jost", serif;
-    background-color: #192238;
-    min-height: 100vh;
+    background-color: #0f1421;
+    overflow-x: hidden;
+    width: 100vw;
 }
 
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 80px;
-    width: 100%;
-    padding: 0 24px;
-    background: transparent;
-    position: sticky;
-    top: 0;
-    box-shadow: 0 10px 20px rgba(16, 95, 72, 0.381);
-    backdrop-filter: blur(10px);
-    z-index: 999;
-}
-
-.navbar-logo {
-    font-size: 2rem;
-    font-weight: 600;
-    color: rgb(250, 250, 250);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0 2rem;
-    max-width: 1600px;
-    border-radius: 10px;
-}
-
-.navbar-container .navbar-menu {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 1.5rem;
-}
-
-.navbar-container .navbar-menu li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.3rem;
+.logo {
     font-weight: 500;
-    padding: 3px 20px;
-    border: 2px solid transparent;
-    border-radius: 20px;
-    transition: all 0.7s;
-    white-space: nowrap;
-
-}
-
-.navbar-container .navbar-menu li a:hover {
-    color: #162330;
-    background: rgba(118, 212, 229, 0.8);
-    border: 2px solid #fff;
-    text-decoration: underline;
-    transition: 0.7s;
-}
-
-.navbar-toggle {
-    display: none;
-    background: transparent;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-}
-
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: white;
-    transition: all 0.3s ease-in-out;
-}
-
-@media (max-width: 880px) {
-.navbar {
-    backdrop-filter: none;
-}
-   .navbar-container .navbar-menu {
-    display: none;
-flex-direction: column;
-align-items: flex-start;
-gap: 1.7rem !important;
-position: absolute;
-height: 100vh;
-width: 250px;
-top: 0;
-right: 0;
-padding: 5rem 1.5rem;
-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-backdrop-filter: blur(1px);
-   }
-
-   .navbar-container .navbar-menu.active {
-    display: flex;
-   }
-
-
-.navbar-toggle {
-    display: block;
-    z-index: 999;
-}
-
-.navbar-toggle.active .bar:nth-child(2) {
-    opacity: 0;
-}
-.navbar-toggle.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-.navbar-toggle.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-}
-
-@media (max-width: 480px) {
-.navbar-container {
-    padding: 0 1rem;
-}
-.navbar-logo {
-    font-size: 1.7rem;
-}
-.navbar-container .navbar-menu li a {
-    font-size: 1.2rem;
-    padding: 3px 15px;
-}
-}
-
-
-.right-btn {
+    font-family: 2rem;
     color: white;
 }
 
+.navbar {
+    display: flex;
+    background-color: #0f1421;
+    height: 50px;
+    align-items: center;
+    width: 100%;
+}
 
+.navbar-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+padding: 0 40px;
+
+}
+
+.wrapper {
+    position: relative;
+
+/* instead of forcing 100%, w=i make the wrapper fill the screen
+    but cap it at a maximum width so the image doesn't get rediculously large
+    on huge monitors*/
+
+    width: 100%;
+    max-width: 1200px;
+/* fix the edge spacing: this centers the entire  wrapper
+horizontally on the page and creates a nice 20px gap from
+the left and the right walls of the browser screen*/
+    margin: 40px auto;
+    padding: 0 20px;
+
+}
+
+#carousal {
+    
+    width: 100%;
+    border-radius: 10px;
+    /* fix the height: This sets a strict ceiling for how tall the image get.
+    Adjust '500px' up or down depending on how tall you want
+    it to look*/
+    max-height: 400px;  
+
+    /*🛠️ Fix for aspect ratio: Crucial property when capping height.
+    it tells the browser image to crop beautifully to fit the size,
+    rather than squishing or wrapping it.*/
+    object-fit: cover;
+}
+
+.ul-items {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.ul-items li a {
+color: white;
+cursor: pointer;
+text-decoration: none;
+font-size: 1rem;
+}
+
+.ul-items li a:hover {
+    display: inline-block;
+    transition: 0.2s ease-in-out;
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+.btn-left, .btn-right {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+border: none;
+border-radius: 10px;
+padding: 10px;
+background-color: rgba(0, 0, 0, 0.2);
+display: flex;
+justify-content: center;
+align-items: center;
+transition: background-color 0.2s ease;
+cursor: pointer;
+z-index: 10;
+color: white;
+width: 30px;
+
+}
+
+.btn-left {
+    left: 20px;
+}
+
+.btn-right {
+    right: 20px;
+}
+
+.section-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box1 {
+    color: rgb(227, 206, 206);
+    font-family: Arial, sans-serif;
+    font-style: italic;
+    background-color: #0f1421;
+    max-width: 300px;
+    max-height: 400px;
+    margin-left: 40px;
+    border: none;
+}
+
+.box2 {
+margin-right: 70px;
+
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.box2 img {
+    width: 100%;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.box2 img:hover {
+    transform: translateY(-3px);
+}
+
+.new-container {
+    margin: 40px auto;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 450px;
+    background-image: url("images/cosmic-energy.jpg");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    isolation: isolate;
+    max-width: 1200px;
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: calc(100% - 40px);
+}
+
+.new-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(1px);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif
+    -webkit-backdrop-filter: blur(10px);
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    width: 200px;
+    height: 150px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.new-box:hover {
+    transform: translateY(-2px);
+    border: 1px solid gold;
+}
+
+.new-box .material-symbols-outlined {
+position: absolute;
+top: 22px;
+font-size: 1.2rem;
+background-color: greenyellow;
+left: 20px;
+color: black;
+}
+
+.about-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    overflow: hidden;
+    isolation: isolate;
+    max-width: 1200px;
+    width: calc(100% - 40px);
+    background-image: url("images/about us.jpg");
+    min-height: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 0 20px;
+}
+
+h1 {
+    color: white;
+    font-size: 4rem;
+    left: 20px;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    width: 90%;
+    overflow: hidden;
+
+}
